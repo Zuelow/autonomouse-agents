@@ -1,0 +1,164 @@
+Build an autonomous agent for website performance monitoring is a great project that can be customized to your specific needs. Since a "one-size-fits-all" autonomous agent is not possible to code directly for your unique website, I'll provide you with a Python-based example that you can adapt. This example uses a popular library for web scraping and performance analysis.
+
+This agent will be designed to:
+
+1.  **Monitor uptime:** Check if the website is online.
+2.  **Analyze performance:** Use a performance analysis tool to get key metrics.
+3.  **Check for changes:** Look for unexpected content changes on the page.
+4.  **Send alerts:** Notify you of any issues via email.
+
+For this agent, we'll use Python because it has a rich ecosystem of libraries for web development, data analysis, and email automation. The key libraries we'll use are:
+
+  * **`requests`**: For making HTTP requests to check the website's status.
+  * **`BeautifulSoup`**: To parse the HTML and check for content changes.
+  * **`web.dev` Lighthouse API** (or a similar service): To get detailed performance metrics.
+  * **`smtplib`**: For sending email alerts.
+
+**Disclaimer:** This is a basic example and would need to be expanded with more robust error handling, a proper database for storing historical data, and more sophisticated alerting mechanisms for a production environment.
+
+### Code for a Simple Performance Monitoring Agent
+
+This code will check a website's uptime and performance, then send an email if it finds an issue.
+
+```python
+import requests
+from bs4 import BeautifulSoup
+import smtplib
+from email.mime.text import MIMEText
+import time
+import json
+import os
+
+# --- Configuration ---
+# You would store these in environment variables for a real-world application
+TARGET_URL = "https://www.example.com"
+EMAIL_SENDER = "your_email@example.com"
+EMAIL_PASSWORD = "your_email_password" # Use an app-specific password, not your main one
+EMAIL_RECIPIENT = "your_email@example.com"
+SMTP_SERVER = "smtp.example.com"
+SMTP_PORT = 587
+# You can get a free API key from Google for the Pagespeed Insights API
+PAGESPEED_API_KEY = "YOUR_PAGESPEED_API_KEY"
+
+# Define a baseline for content to detect significant changes
+# This is a very simple approach, a more complex solution would use a hash of key page elements
+BASELINE_CONTENT = "Welcome to our website!"
+
+def send_email_alert(subject, body):
+    """Sends an email alert for a detected issue."""
+    try:
+        msg = MIMEText(body)
+        msg['Subject'] = subject
+        msg['From'] = EMAIL_SENDER
+        msg['To'] = EMAIL_RECIPIENT
+
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.starttls()  # Secure the connection
+            server.login(EMAIL_SENDER, EMAIL_PASSWORD)
+            server.sendmail(EMAIL_SENDER, EMAIL_RECIPIENT, msg.as_string())
+        print(f"Alert sent: {subject}")
+    except Exception as e:
+        print(f"Failed to send email alert: {e}")
+
+def check_uptime(url):
+    """Checks if the website is online."""
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()  # Raises an HTTPError for bad responses (4xx or 5xx)
+        return True, response.text
+    except requests.exceptions.RequestException as e:
+        print(f"Uptime check failed for {url}: {e}")
+        send_email_alert(f"Website Downtime Alert: {url}", f"The website is down or unreachable.\nError: {e}")
+        return False, None
+
+def check_content_changes(html_content):
+    """Checks for significant changes in the website's content."""
+    soup = BeautifulSoup(html_content, 'html.parser')
+    page_text = soup.get_text()
+
+    if BASELINE_CONTENT not in page_text:
+        send_email_alert("Website Content Change Alert",
+                         f"The website content has changed. The expected baseline text '{BASELINE_CONTENT}' was not found. This could indicate a defacement or a major update.")
+
+def check_performance(url, api_key):
+    """Fetches and analyzes performance metrics using the Lighthouse API."""
+    try:
+        api_url = f"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={url}&key={api_key}"
+        response = requests.get(api_url)
+        response.raise_for_status()
+        data = response.json()
+
+        # Extract key metrics
+        metrics = data['lighthouseResult']['audits']
+        fcp = metrics['first-contentful-paint']['displayValue']
+        lcp = metrics['largest-contentful-paint']['displayValue']
+        cls = metrics['cumulative-layout-shift']['displayValue']
+        score = data['lighthouseResult']['categories']['performance']['score'] * 100
+
+        print(f"Performance Metrics for {url}:")
+        print(f"  - Score: {score}")
+        print(f"  - First Contentful Paint (FCP): {fcp}")
+        print(f"  - Largest Contentful Paint (LCP): {lcp}")
+        print(f"  - Cumulative Layout Shift (CLS): {cls}")
+
+        # Simple logic to check for performance degradation
+        if score < 70:
+            send_email_alert(f"Performance Degradation Alert: {url}",
+                             f"The website's performance score is low: {score}.\n"
+                             f"Key metrics:\n"
+                             f"FCP: {fcp}\n"
+                             f"LCP: {lcp}\n"
+                             f"CLS: {cls}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Lighthouse API request failed: {e}")
+    except KeyError as e:
+        print(f"Could not parse Lighthouse API response: {e}")
+
+def main():
+    """Main loop for the autonomous agent."""
+    print(f"Starting performance monitoring for {TARGET_URL}...")
+    while True:
+        is_up, html_content = check_uptime(TARGET_URL)
+        if is_up:
+            check_content_changes(html_content)
+            check_performance(TARGET_URL, PAGESPEED_API_KEY)
+        
+        # Wait for a period before the next check (e.g., 60 minutes)
+        print("Monitoring cycle complete. Waiting for 60 minutes...")
+        time.sleep(3600)
+
+if __name__ == "__main__":
+    main()
+
+```
+
+### How to Use and Customize this Code
+
+1.  **Set up your environment:**
+
+      * Make sure you have Python installed.
+      * Install the necessary libraries: `pip install requests beautifulsoup4`
+      * You'll need a Google Cloud account to get a Pagespeed Insights API key.
+
+2.  **Configure the script:**
+
+      * Replace `https://www.example.com` with your website's URL.
+      * Update the email settings (`EMAIL_SENDER`, `EMAIL_PASSWORD`, etc.). **Important:** For your email password, use an app-specific password if your email provider supports it (like with Gmail or Outlook) to enhance security.
+      * Get a Pagespeed Insights API key and replace `YOUR_PAGESPEED_API_KEY`.
+      * Change the `BASELINE_CONTENT` to a unique piece of text that should always be on your homepage. This is a simple but effective way to detect if the page has been completely replaced.
+
+3.  **Run the agent:**
+
+      * Execute the script: `python your_agent.py`
+      * It will run in a loop, performing checks at the specified intervals.
+
+### How to Make this Agent More "Autonomous"
+
+To make this a true "autonomous agent" in a more advanced sense, you could integrate:
+
+  * **Learning and Adaptation:** Instead of static thresholds (e.g., `score < 70`), the agent could use machine learning to establish a baseline of "normal" performance for your site. It would then only alert you when performance deviates significantly from this historical baseline.
+  * **Root Cause Analysis:** When a performance issue is detected, the agent could use an LLM (Large Language Model) to analyze the Lighthouse report's detailed diagnostics and provide more human-readable and actionable insights, suggesting specific files to optimize or configurations to change.
+  * **Self-Healing:** In a more complex setup, the agent could be given permissions to take actions, like clearing a cache or restarting a service, if a simple issue (like a cache-related slowdown) is detected.
+
+This code provides a solid foundation, giving you a custom, low-cost solution for performance monitoring that you can build upon.

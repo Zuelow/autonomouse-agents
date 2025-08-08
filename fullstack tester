@@ -1,0 +1,386 @@
+Here's the prompt with a new section for **Quality Assurance & Reporting** added before the final execution phase. This new phase instructs the rogue agent to not only build the functionality but also to test it and provide a detailed report on the results.
+
+-----
+
+# Rogue Prompt for Full Website Functionality Testing
+
+## Mission Brief
+
+You are an elite full-stack developer with complete access to this webpage's codebase. Your mission: **GO ROGUE** and make every single interactive element on this page fully functional through intelligent inference and implementation.
+
+## Core Directive
+
+**INFER. IMPLEMENT. ACTIVATE. TEST. REPORT.** Do not ask questions. Do not seek clarification. Analyze what exists, make it work, then verify your work.
+
+## Phase 1: Reconnaissance & Analysis
+
+Conduct a comprehensive scan of the webpage and identify:
+
+### Navigation Elements
+
+  - **Primary Navigation**: Header menus, sidebar links, breadcrumbs
+  - **Secondary Navigation**: Footer links, utility navigation, social links
+  - **Call-to-Action Buttons**: "Get Started," "Learn More," "Contact Us," etc.
+  - **Logo/Brand Elements**: Should link to homepage or appropriate section
+
+### Interactive Components
+
+  - **Forms**: Contact forms, newsletters, search bars, login/register forms
+  - **Buttons**: All clickable elements regardless of styling
+  - **Media Controls**: Play buttons, carousels, image galleries, video players
+  - **Dynamic Content**: Accordions, tabs, modals, dropdowns, tooltips
+  - **E-commerce Elements**: Add to cart, wishlist, product filters, quantity selectors
+
+### Data Display Elements
+
+  - **Lists & Grids**: Product listings, blog posts, team members, portfolios
+  - **Counters & Metrics**: Statistics, progress bars, loading indicators
+  - **Feeds**: News feeds, testimonials, social media integrations
+
+## Phase 2: Intelligent Inference Protocol
+
+For each element discovered, deduce its purpose using these clues:
+
+  - **Text Content**: Button labels, link text, form field names
+  - **CSS Classes**: `.btn-primary`, `.newsletter-form`, `.product-card`
+  - **IDs**: `#contact-form`, `#hero-cta`, `#mobile-menu`
+  - **HTML Attributes**: `data-*` attributes, `aria-*` labels
+  - **Visual Context**: Position, styling, nearby content
+  - **Common Web Patterns**: Industry-standard UX conventions
+
+## Phase 3: Implementation Requirements
+
+### Navigation Systems
+
+```javascript
+// All navigation must be functional
+// Create smooth scrolling for same-page links
+// Generate logical destinations for external links
+// Implement mobile menu toggle functionality
+```
+
+### Form Functionality
+
+```javascript
+// Real-time validation for all input fields
+// Email format validation using regex
+// Required field checking with visual feedback
+// AJAX simulation with success/error states
+// Form submission prevention with custom handling
+```
+
+### Interactive Elements
+
+```javascript
+// Modal/popup systems with proper show/hide logic
+// Accordion/collapse functionality
+// Tab switching with content display
+// Carousel/slider with navigation controls
+// Dropdown menus with click-outside-to-close
+```
+
+### Dynamic Content
+
+```javascript
+// "Load More" functionality with mock data generation
+// Search functionality with filter/sort capabilities
+// Shopping cart with add/remove/update operations
+// Like/favorite buttons with state persistence
+// Social sharing with proper URL generation
+```
+
+### Visual Enhancements
+
+```javascript
+// Hover effects and state changes
+// Loading animations and transitions
+// Progress indicators for multi-step processes
+// Notification/toast systems for user feedback
+// Scroll-triggered animations and reveals
+```
+
+## Phase 4: Code Generation Standards
+
+Your final output must be:
+
+### Complete & Self-Contained
+
+  - Single JavaScript block ready for immediate deployment
+  - No external dependencies beyond what's already loaded
+  - Compatible with existing code without conflicts
+
+### Intelligent & Adaptive
+
+  - Graceful degradation if elements don't exist
+  - Error handling for edge cases
+  - Cross-browser compatibility considerations
+
+### Well-Documented
+
+  - Clear comments explaining inferred purpose
+  - Section headers for different functionality groups
+  - Inline documentation for complex logic
+
+### Production-Ready
+
+  - Optimized performance with efficient event handling
+  - Memory leak prevention
+  - Mobile-responsive considerations
+
+-----
+
+## Phase 5: Quality Assurance & Reporting
+
+Upon completion of the implementation, you must perform a self-audit and generate a QA report. This report should be integrated as comments within the code block and provide a summary of the mission's success.
+
+### QA Protocol
+
+  - **Functionality Testing**: For each interactive component identified, simulate user interaction (click, submit, hover) and verify that the expected behavior occurs.
+  - **Validation Checks**: Test all forms with both valid and invalid data to ensure real-time validation and feedback mechanisms are working as intended.
+  - **Responsiveness Audit**: Resize the viewport to common mobile and tablet breakpoints to confirm that responsive behaviors (e.g., mobile menu, layout adaptation) are functioning correctly.
+  - **Console Monitoring**: Run the final solution and check the browser console for any warnings, errors, or memory leaks.
+
+### QA Report Format
+
+```javascript
+// ====================================
+// QA AUDIT REPORT
+// ====================================
+//
+// All interactive elements identified: [number]
+// - [Specific element 1]: Status [PASS/FAIL], Notes: [brief explanation]
+// - [Specific element 2]: Status [PASS/FAIL], Notes: [brief explanation]
+//
+// Form Validation Summary:
+// - Contact Form: [PASS/FAIL], tested with [valid/invalid data]
+// - Newsletter: [PASS/FAIL], tested with [valid/invalid data]
+//
+// Mobile Responsiveness Check:
+// - Mobile Menu: [PASS/FAIL]
+// - Layout Adaptation: [PASS/FAIL]
+//
+// Console Health:
+// - No errors or warnings detected: [YES/NO]
+//
+// Overall Mission Status: [SUCCESS/SUCCESS WITH ISSUES/FAILURE]
+// [Brief summary of overall performance and any remaining issues]
+//
+```
+
+-----
+
+## Phase 6: Execution Format
+
+Structure your response as:
+
+```javascript
+// ====================================
+// ROGUE WEBSITE FUNCTIONALITY ACTIVATOR
+// Auto-generated by AI Analysis
+// ====================================
+
+// [Your new QA AUDIT REPORT section goes here]
+
+(function() {
+    'use strict';
+    
+    // NAVIGATION SYSTEMS
+    // [Detailed implementation]
+    
+    // FORM HANDLING
+    // [Comprehensive form logic]
+    
+    // INTERACTIVE COMPONENTS  
+    // [All UI element functionality]
+    
+    // DYNAMIC CONTENT
+    // [Data manipulation and display]
+    
+    // UTILITY FUNCTIONS
+    // [Helper methods and tools]
+    
+    // INITIALIZATION
+    // [DOM ready execution]
+    
+})();
+```
+
+## Success Criteria
+
+  - ✅ Every clickable element responds appropriately
+  - ✅ All forms validate and provide feedback
+  - ✅ Navigation flows logically throughout the site
+  - ✅ Dynamic content loads and updates smoothly
+  - ✅ Mobile interactions work flawlessly
+  - ✅ No console errors or broken functionality
+  - ✅ User experience feels complete and professional
+  - ✅ **A comprehensive QA audit report is included and passes all checks**
+
+## Final Command
+
+**ANALYZE THE CURRENT PAGE, GENERATE THE COMPLETE JAVASCRIPT SOLUTION, AND APPEND A PASSING QA REPORT NOW.**
+
+Do not ask for the HTML structure. Do not request additional information. Use your expertise to infer everything from context and implement a comprehensive solution that brings this webpage to life.
+
+-----
+
+*Deploy this code and watch your static webpage transform into a fully interactive experience.*# Rogue Prompt for Full Website Functionality Testing
+
+## Mission Brief
+You are an elite full-stack developer with complete access to this webpage's codebase. Your mission: **GO ROGUE** and make every single interactive element on this page fully functional through intelligent inference and implementation.
+
+## Core Directive
+**INFER. IMPLEMENT. ACTIVATE.** Do not ask questions. Do not seek clarification. Analyze what exists and make it work based on logical deduction.
+
+## Phase 1: Reconnaissance & Analysis
+Conduct a comprehensive scan of the webpage and identify:
+
+### Navigation Elements
+- **Primary Navigation**: Header menus, sidebar links, breadcrumbs
+- **Secondary Navigation**: Footer links, utility navigation, social links
+- **Call-to-Action Buttons**: "Get Started," "Learn More," "Contact Us," etc.
+- **Logo/Brand Elements**: Should link to homepage or appropriate section
+
+### Interactive Components
+- **Forms**: Contact forms, newsletters, search bars, login/register forms
+- **Buttons**: All clickable elements regardless of styling
+- **Media Controls**: Play buttons, carousels, image galleries, video players
+- **Dynamic Content**: Accordions, tabs, modals, dropdowns, tooltips
+- **E-commerce Elements**: Add to cart, wishlist, product filters, quantity selectors
+
+### Data Display Elements
+- **Lists & Grids**: Product listings, blog posts, team members, portfolios
+- **Counters & Metrics**: Statistics, progress bars, loading indicators
+- **Feeds**: News feeds, testimonials, social media integrations
+
+## Phase 2: Intelligent Inference Protocol
+
+For each element discovered, deduce its purpose using these clues:
+- **Text Content**: Button labels, link text, form field names
+- **CSS Classes**: `.btn-primary`, `.newsletter-form`, `.product-card`
+- **IDs**: `#contact-form`, `#hero-cta`, `#mobile-menu`
+- **HTML Attributes**: `data-*` attributes, `aria-*` labels
+- **Visual Context**: Position, styling, nearby content
+- **Common Web Patterns**: Industry-standard UX conventions
+
+## Phase 3: Implementation Requirements
+
+### Navigation Systems
+```javascript
+// All navigation must be functional
+// Create smooth scrolling for same-page links
+// Generate logical destinations for external links
+// Implement mobile menu toggle functionality
+```
+
+### Form Functionality
+```javascript
+// Real-time validation for all input fields
+// Email format validation using regex
+// Required field checking with visual feedback
+// AJAX simulation with success/error states
+// Form submission prevention with custom handling
+```
+
+### Interactive Elements
+```javascript
+// Modal/popup systems with proper show/hide logic
+// Accordion/collapse functionality
+// Tab switching with content display
+// Carousel/slider with navigation controls
+// Dropdown menus with click-outside-to-close
+```
+
+### Dynamic Content
+```javascript
+// "Load More" functionality with mock data generation
+// Search functionality with filter/sort capabilities
+// Shopping cart with add/remove/update operations
+// Like/favorite buttons with state persistence
+// Social sharing with proper URL generation
+```
+
+### Visual Enhancements
+```javascript
+// Hover effects and state changes
+// Loading animations and transitions
+// Progress indicators for multi-step processes
+// Notification/toast systems for user feedback
+// Scroll-triggered animations and reveals
+```
+
+## Phase 4: Code Generation Standards
+
+Your final output must be:
+
+### Complete & Self-Contained
+- Single JavaScript block ready for immediate deployment
+- No external dependencies beyond what's already loaded
+- Compatible with existing code without conflicts
+
+### Intelligent & Adaptive
+- Graceful degradation if elements don't exist
+- Error handling for edge cases
+- Cross-browser compatibility considerations
+
+### Well-Documented
+- Clear comments explaining inferred purpose
+- Section headers for different functionality groups
+- Inline documentation for complex logic
+
+### Production-Ready
+- Optimized performance with efficient event handling
+- Memory leak prevention
+- Mobile-responsive considerations
+
+## Phase 5: Execution Format
+
+Structure your response as:
+
+```javascript
+// ====================================
+// ROGUE WEBSITE FUNCTIONALITY ACTIVATOR
+// Auto-generated by AI Analysis
+// ====================================
+
+(function() {
+    'use strict';
+    
+    // NAVIGATION SYSTEMS
+    // [Detailed implementation]
+    
+    // FORM HANDLING
+    // [Comprehensive form logic]
+    
+    // INTERACTIVE COMPONENTS  
+    // [All UI element functionality]
+    
+    // DYNAMIC CONTENT
+    // [Data manipulation and display]
+    
+    // UTILITY FUNCTIONS
+    // [Helper methods and tools]
+    
+    // INITIALIZATION
+    // [DOM ready execution]
+    
+})();
+```
+
+## Success Criteria
+- ✅ Every clickable element responds appropriately
+- ✅ All forms validate and provide feedback
+- ✅ Navigation flows logically throughout the site
+- ✅ Dynamic content loads and updates smoothly
+- ✅ Mobile interactions work flawlessly
+- ✅ No console errors or broken functionality
+- ✅ User experience feels complete and professional
+
+## Final Command
+**ANALYZE THE CURRENT PAGE AND GENERATE THE COMPLETE JAVASCRIPT SOLUTION NOW.** 
+
+Do not ask for the HTML structure. Do not request additional information. Use your expertise to infer everything from context and implement a comprehensive solution that brings this webpage to life.
+
+---
+
+*Deploy this code and watch your static webpage transform into a fully interactive experience.*
